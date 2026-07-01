@@ -1,0 +1,15 @@
+# Environment / secrets
+.env
+
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+
+# Runtime artifacts
+postgres_data/
+
+# OS
+.DS_Store
