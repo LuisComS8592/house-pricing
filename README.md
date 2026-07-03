@@ -10,8 +10,6 @@ SHAP-based explainability, a PostgreSQL database that logs every prediction,
 and a Streamlit frontend for interactive use — all orchestrated with Docker
 Compose.
 
-**Team:** Laura de Freitas Sales, Luis Enrique Krulikowski
-
 ---
 
 ## Architecture
@@ -146,29 +144,3 @@ Response:
 Properties predicted above US$ 1,000,000, or with more than 6 bedrooms or
 4 bathrooms, are automatically flagged with `processing_status: "review"` for
 manual review, instead of `"approved"`.
-
-## Notes on the Refactor
-
-This repository was reorganized from a flat, single-folder deployment into
-the structure above. Along the way:
-
-- **Security:** database credentials were moved out of `docker-compose.yml`
-  and into a git-ignored `.env` file (`.env.example` documents the required
-  variables).
-- **Missing Dockerfile:** the API had no `Dockerfile` in the original
-  deployment; one was created following the same pattern as the frontend's.
-- **Model/data location:** the model and dataset are mounted as volumes
-  (`models/`, `data/`) rather than baked into the API image, so they can be
-  updated without rebuilding the container.
-- **Translation:** all code, comments, and user-facing text were translated
-  to English for portfolio consistency with the modeling notebook. API
-  response field names changed accordingly (e.g. `preco_estimado` →
-  `estimated_price`); if you have older client code pointing at the previous
-  Portuguese field names or the `/prever` route, update it to match the
-  reference above.
-- **Large files:** `house_prices.csv`, the `.joblib` model, and the SQLite
-  runtime file are tracked with Git LFS rather than committed as regular
-  blobs. Note that the SQLite file (`house_pricing_db.db`) is a *runtime*
-  artifact regenerated automatically by the API — you generally don't need
-  to commit it at all; it's only tracked here because Postgres is the
-  default in Docker and SQLite only kicks in as a local fallback.
