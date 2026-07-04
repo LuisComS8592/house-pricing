@@ -175,19 +175,3 @@ Envie requisições `POST` para `http://localhost:8000/predict`.
 > Para os números exatos de MAE/RMSE/R² de cada modelo, execute o notebook — o pipeline final está disponível em `models/pipeline_catboost_house_pricing.joblib`.
 
 ---
-
-## 📸 Screenshots
-
-<!--
-  Adicione screenshots reais aqui, por exemplo:
-  ![Formulário Streamlit](docs/screenshots/form.png)
-  ![Resultado com gráfico SHAP](docs/screenshots/result.png)
--->
-
-| Formulário de predição | Resultado & explicabilidade SHAP |
-|---|---|
-| _screenshot em breve_ | _screenshot em breve_ |
-
-> Rode `docker compose up --build` e acesse http://localhost:8501 para ver ao vivo.
-
----
